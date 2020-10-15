@@ -1,0 +1,11 @@
+def scrap_video_url_source(origin_url):
+    parsed = parse_url(origin_url)
+    video = parsed.select('.FeaturedServer')
+    return video
+
+
+if len(video_source):
+   video = video_source[0].get('data-url')
+
+
+, 'video_source_url': video
