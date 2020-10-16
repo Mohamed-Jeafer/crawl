@@ -14,17 +14,13 @@ def get_search_site(site, assets):
     search_site = []
     for item in assets:
         for i in item['keywords']:
-            print(i)
             chrome_browser.get(site['site_link'])
-            print(site['site_link'])
             search_button = chrome_browser.find_element_by_class_name(site['search_button_class'])
-            print(search_button)
             search_box = chrome_browser.find_element_by_id(site['search_box_id'])
-            print(search_box)
             search_box.send_keys(i)
             search_button.click()
             search_site.append(chrome_browser.current_url)
-            print(search_site)
+    print(search_site)
     return search_site
 
 

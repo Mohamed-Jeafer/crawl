@@ -26,13 +26,13 @@ site = [
 assets = [
     {
         'id': '2',
-        'name': 'the blacklist',
-        'keywords': ['the blacklist', ]
+        'name': 'The Blacklist',
+        'keywords': ['The Blacklist', ]
     },
     {
         'id': '1',
-        'name': 'afili aşk',
-        'keywords': ['afili ask ', 'الحب ورطة', ]
+        'name': 'Afili Ask',
+        'keywords': ['Afili Afili ', 'الحب ورطة', ]
     }
 ]
 
@@ -58,25 +58,30 @@ def parse_url(url):
         res = requests.get(item)
         soup = BeautifulSoup(res.text, 'html.parser')
         parsed.append(soup)
+        print(len(parsed))
     return parsed
 
 
 def scrap_url(site, assets):
     url_list = []
-    for i, item1 in enumerate(site):
-        parsed = parse_url(get_search_site(site[i], assets))
-        for item2 in parsed:
-            video_class = item2.select(site[i]['block'])
+    for idx_num in range(len(site)):
+        print(f'length at the first loop{len(url_list)}')
+        parsed_list = parse_url(get_search_site(site[idx_num], assets))
+        for parsed_url in parsed_list:
+            print(f'length at the second loop{len(url_list)}')
+            video_class = parsed_url.select(site[idx_num]['block'])
             for idx, item3 in enumerate(video_class):
-                title_class = video_class[idx].select(site[i]['title_class'])
+                print(f'length at the third loop{len(url_list)}')
+                title_class = video_class[idx].select(site[idx_num]['title_class'])
                 href_element = video_class[idx].select('a')
                 if len(href_element):
                     link = href_element[0].get('href')
                     title = title_class[0].getText()
-                    for item4 in assets:
-                        for i2 in item4['keywords']:
-                            if i2 in title:
-                                url_list.append({'title': title, 'link': link, 'site_name': site[i]['site_name']})
+                    for lst in assets:
+                        print(f'length at the fourth loop{len(url_list)}')
+                        for keyword in lst['keywords']:
+                            if keyword in title:
+                                url_list.append({'title': title, 'link': link, 'site_name': site[idx_num]['site_name']})
                                 get_screenshot(link, title)
     return url_list
 
