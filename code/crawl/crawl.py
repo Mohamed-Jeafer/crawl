@@ -1,11 +1,7 @@
-from selenium import webdriver
-import scrap
+from selenium import webdriver, common
 import time
 
 chrome_browser = webdriver.Chrome('chromedriver.exe')
-
-asset_id1 = 'Afili Ask'
-asset_id2 = 'The Blacklist'
 
 # video_source_url = ''
 # extracted_from = chrome_browser.xp
@@ -14,11 +10,27 @@ asset_id2 = 'The Blacklist'
 url_list = [{'title': 'title', 'link': 'link', 'site_name': 'site[i][''site_name'']'}]
 
 
-def search_site(url_list):
-    for idx, url in enumerate(site):
-        url = url_list[idx]['link']
-        chrome_browser.get(url)
-        chrome_browser.save_screenshot('screenshot.png')
+def get_search_site(site, assets):
+    search_site = []
+    for item in assets:
+        for i in item['keywords']:
+            print(i)
+            chrome_browser.get(site['site_link'])
+            print(site['site_link'])
+            search_button = chrome_browser.find_element_by_class_name(site['search_button_class'])
+            print(search_button)
+            search_box = chrome_browser.find_element_by_id(site['search_box_id'])
+            print(search_box)
+            search_box.send_keys(i)
+            search_button.click()
+            search_site.append(chrome_browser.current_url)
+            print(search_site)
+    return search_site
 
 
-search_site(url_list)
+def get_screenshot(link, title):
+    chrome_browser.get(link)
+    chrome_browser.save_screenshot(f'../screenshots/{title}.png')
+
+
+
