@@ -1,5 +1,6 @@
 from selenium import webdriver
 
+# If a linux is used, please use the chromedriverlinux instead of chromedriver.exe for windows
 chrome_browser = webdriver.Chrome('chromedriver.exe')
 chrome_browser.maximize_window()
 
