@@ -27,6 +27,7 @@ def get_search_site(site, assets):
 def get_screenshot(link, title):
     chrome_browser.get(link)
     chrome_browser.save_screenshot(f'../screenshots/{title}.png')
+    return f'../screenshots/{title}.png'
 
 
 
