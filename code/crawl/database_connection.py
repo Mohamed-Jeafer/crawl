@@ -32,6 +32,8 @@ def get_scrap_detail():
             'site_link': site_link[0]['website_name'],
             'block': '.MovieBlock',  # CSS class on the website that holds the needed information
             'title_class': '.BoxTitle',  # CSS class that refers to the asset title
+            'search_box_xpath': '/html/body/div[1]/div[1]/form/input',  # Search Box Xpath
+            'search_button_xpath': '/html/body/div[1]/div[1]/form/button',  # search button xpath
             'search_box_id': 'SearchingInput',  # CSS id element for the search text box
             'search_button_class': 'ion-md-search',  # CSS class in the button
         },
@@ -40,8 +42,10 @@ def get_scrap_detail():
             'site_link': site_link[1]['website_name'],
             'block': '.BlockItem',
             'title_class': '.TitleBlockMovieNormal',
+            'search_box_xpath': '/html/body/div[3]/h2/div[3]/form/input',
+            'search_button_xpath': '/html/body/div[3]/h2/div[3]/form/button/i',
             'search_box_id': 's',
-            'search_button_class': 'fa-search'
+            'search_button_class': 'fa-search',
         }
     ]
     asset_name = get_data_from_db("select * from assets")
