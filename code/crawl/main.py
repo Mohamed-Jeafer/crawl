@@ -1,4 +1,4 @@
-from extract import get_search_site, get_screenshot
+from extract import get_search_site, get_screenshot, close_browser
 from database_connection import get_scrap_detail
 
 import requests
@@ -50,6 +50,7 @@ def main(site, assets):
                                 print(f'{keyword} was not found in {link}')
     save_to_excel_file(url_list)
     pprint.pprint(url_list)
+    close_browser()
     return url_list
 
 

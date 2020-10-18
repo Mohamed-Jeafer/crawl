@@ -20,6 +20,10 @@ chrome_browser.implicitly_wait(10)
 chrome_browser.maximize_window()
 
 
+def close_browser():
+    chrome_browser.quit()
+
+
 # Searches the given URLs for the assets provided
 def get_search_site(site, assets):
     search_site = []
