@@ -50,13 +50,14 @@ def main(site, assets):
                                 print(f'{keyword} was not found in {link}')
     save_to_excel_file(url_list)
     pprint.pprint(url_list)
+    print(f'The total amount of items found is {len(url_list)}')
     close_browser()
     return url_list
 
 
 # Writes the extracted data into Excel file
 def save_to_excel_file(lst):
-    workbook = xlsxwriter.Workbook('../database/data_extract.xlsx')
+    workbook = xlsxwriter.Workbook('./database/data_extract.xlsx')
     worksheet = workbook.add_worksheet('sheet1')
     bold = workbook.add_format({'bold': 1})
     # Fixing the width of the column

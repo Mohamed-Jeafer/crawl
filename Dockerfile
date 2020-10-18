@@ -24,3 +24,5 @@ WORKDIR /code
 
 # copy files into the working directory
 COPY ./code /code
+
+CMD python main.py
