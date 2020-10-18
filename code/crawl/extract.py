@@ -10,7 +10,7 @@ path_to_extension = os.path.abspath('./3.9.5_0')
 chrome_options.add_argument("load-extension=" + path_to_extension)
 
 chrome_options.add_argument('--no-sandbox')
-# chrome_options.add_argument('--headless')
+# chrome_options.add_argument('--headless')  ## It has been disabled for the screenshots
 chrome_options.add_argument('--disable-gpu')
 
 # ChromeDriverManager allows driver to run on multiple os
